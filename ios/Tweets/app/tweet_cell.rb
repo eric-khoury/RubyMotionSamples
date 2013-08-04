@@ -7,7 +7,7 @@ class TweetCell < UITableViewCell
     cell.fillWithTweet(tweet, inTableView:tableView)
     cell
   end
- 
+
   def initWithStyle(style, reuseIdentifier:cellid)
     if super
       self.textLabel.numberOfLines = 0
@@ -15,10 +15,10 @@ class TweetCell < UITableViewCell
     end
     self
   end
- 
+
   def fillWithTweet(tweet, inTableView:tableView)
     self.textLabel.text = tweet.message
-    
+
     unless tweet.profile_image
       self.imageView.image = nil
       Dispatch::Queue.concurrent.async do

@@ -17,7 +17,7 @@ class TweetsController < UITableViewController
     url = "http://search.twitter.com/search.json?q=#{query}"
 
     @tweets.clear
-    Dispatch::Queue.concurrent.async do 
+    Dispatch::Queue.concurrent.async do
       json = nil
       begin
         json = JSONParser.parse_from_url(url)
@@ -44,12 +44,12 @@ class TweetsController < UITableViewController
     @tweets = tweets
     view.reloadData
   end
- 
+
   def presentError(error)
     # TODO
     $stderr.puts error.description
   end
- 
+
   def tableView(tableView, numberOfRowsInSection:section)
     @tweets.size
   end
@@ -62,7 +62,7 @@ class TweetsController < UITableViewController
     tweet = @tweets[indexPath.row]
     TweetCell.cellForTweet(tweet, inTableView:tableView)
   end
-  
+
   def reloadRowForTweet(tweet)
     row = @tweets.index(tweet)
     if row
