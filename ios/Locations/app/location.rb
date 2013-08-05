@@ -5,7 +5,7 @@ class Location < NSManagedObject
       entity = NSEntityDescription.alloc.init
       entity.name = 'Location'
       entity.managedObjectClassName = 'Location'
-      entity.properties = 
+      entity.properties =
         ['creation_date', NSDateAttributeType,
          'latitude', NSDoubleAttributeType,
          'longitude', NSDoubleAttributeType].each_slice(2).map do |name, type|
@@ -17,5 +17,5 @@ class Location < NSManagedObject
           end
       entity
     end
-  end 
+  end
 end

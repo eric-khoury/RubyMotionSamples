@@ -57,7 +57,7 @@ class LocationsController < UITableViewController
   end
 
   def locationManager(manager, didUpdateToLocation:newLocation, fromLocation:oldLocation)
-    navigationItem.rightBarButtonItem.enabled = true 
+    navigationItem.rightBarButtonItem.enabled = true
   end
 
   def locationManager(manager, didFailWithError:error)

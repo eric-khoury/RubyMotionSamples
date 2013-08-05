@@ -54,7 +54,7 @@ class PeopleController
           next if status.nil?
           thisStatus = status.intValue
           if thisStatus > bestStatus
-            bestStatus = thisStatus 
+            bestStatus = thisStatus
           end
         end
       end
@@ -77,8 +77,8 @@ class PeopleController
     end
     @table.reloadData
   end
-  
-  # This will do a full flush of people in our AB Cache, along with rebuilding their status 
+
+  # This will do a full flush of people in our AB Cache, along with rebuilding their status
   def reloadABPeople
     @abPeople = ABAddressBook.sharedAddressBook.people.sort do |x, y|
       x.displayName <=> y.displayName
@@ -91,7 +91,7 @@ class PeopleController
   def numberOfRowsInTableView(tableView)
     @abPeople ? @abPeople.size : 0
   end
-  
+
   def tableView(tableView, objectValueForTableColumn:tableColumn, row:row)
     case tableColumn.identifier
       when 'status'

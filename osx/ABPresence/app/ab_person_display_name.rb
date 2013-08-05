@@ -11,11 +11,11 @@ class ABPerson
     if (flags & KABShowAsMask) == KABShowAsCompany
       return companyName if companyName and companyName.length > 0
     end
-    
+
     lastNameFirst = (flags & KABNameOrderingMask) == KABLastNameFirst
     hasFirstName = firstName and firstName.length > 0
     hasLastName = lastName and lastName.length > 0
-  
+
     if hasLastName and hasFirstName
       if lastNameFirst
         "#{lastName} #{firstname}"

@@ -23,7 +23,7 @@ class BeerMapController < UIViewController
 
   def viewWillAppear(animated)
     navigationController.setNavigationBarHidden(true, animated:true)
-  end    
+  end
 
   ViewIdentifier = 'ViewIdentifier'
   def mapView(mapView, viewForAnnotation:beer)

@@ -3,22 +3,22 @@ class ImageCompositionController < UIViewController
     self.view = UIImageView.alloc.init
     view.contentMode = UIViewContentModeScaleAspectFill
     view.userInteractionEnabled = true
-    
+
     view.image = UIImage.imageNamed("ballmer.jpg")
     view.addSubview(troll_image_view)
-    
+
     rotationGesture = UIRotationGestureRecognizer.alloc.initWithTarget(self, action: 'rotate_image:')
     troll_image_view.addGestureRecognizer(rotationGesture)
-    
+
     panGesture = UIPanGestureRecognizer.alloc.initWithTarget(self, action: 'pan_image:')
     panGesture.maximumNumberOfTouches = 2
     panGesture.delegate = self
     troll_image_view.addGestureRecognizer(panGesture)
-    
+
     pinchGesture = UIPinchGestureRecognizer.alloc.initWithTarget(self, action:'scale_image:')
     pinchGesture.delegate = self
     troll_image_view.addGestureRecognizer(pinchGesture)
-    
+
     navigationItem.leftBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Pick", style:UIBarButtonItemStylePlain, target:self, action:'show_source_sheet')
     navigationItem.rightBarButtonItem = UIBarButtonItem.alloc.initWithTitle("Save", style:UIBarButtonItemStylePlain, target:self, action:'save_image')
   end
@@ -34,13 +34,13 @@ class ImageCompositionController < UIViewController
       image.image = UIImage.imageNamed("trollface.png")
       image.frame = CGRectMake(0, 0, image.image.size.width, image.image.size.height)
       image.userInteractionEnabled = true
-  
+
       # Set initial scale of the trollface to a quarter.
       image.transform = CGAffineTransformMakeScale(0.25, 0.25)
       image
     end
   end
-  
+
   # Scale and rotation transforms are applied relative to the layer's anchor point.
   # This method moves a gesture recognizer's view's anchor point between the user's fingers.
   def adjust_anchor_point_for_gesture_recognizer(gestureRecognizer)
@@ -52,7 +52,7 @@ class ImageCompositionController < UIViewController
       troll_image_view.center = locationInSuperview
     end
   end
-  
+
   def rotate_image(gestureRecognizer)
     adjust_anchor_point_for_gesture_recognizer(gestureRecognizer)
     if gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged
@@ -60,7 +60,7 @@ class ImageCompositionController < UIViewController
       gestureRecognizer.rotation = 0
     end
   end
-  
+
   def pan_image(gestureRecognizer)
     adjust_anchor_point_for_gesture_recognizer(gestureRecognizer)
     if gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged
@@ -69,7 +69,7 @@ class ImageCompositionController < UIViewController
       gestureRecognizer.setTranslation(CGPointZero, inView:troll_image_view.superview)
     end
   end
-  
+
   def scale_image(gestureRecognizer)
     adjust_anchor_point_for_gesture_recognizer(gestureRecognizer)
     if gestureRecognizer.state == UIGestureRecognizerStateBegan || gestureRecognizer.state == UIGestureRecognizerStateChanged
@@ -77,18 +77,18 @@ class ImageCompositionController < UIViewController
       gestureRecognizer.scale = 1
     end
   end
-  
+
   def gestureRecognizer(gestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer)
     true
   end
-  
+
   def show_source_sheet
     popupQuery = UIActionSheet.alloc.initWithTitle("", delegate:self, cancelButtonTitle:'Cancel', destructiveButtonTitle:nil, otherButtonTitles:"Choose Existing", "Take Picture", nil)
     popupQuery.delegate = self
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque
     popupQuery.showInView(view)
   end
-  
+
   def actionSheet(actionSheet, clickedButtonAtIndex:buttonIndex)
     case buttonIndex
       when 0
@@ -99,15 +99,15 @@ class ImageCompositionController < UIViewController
         # cancelled
     end
   end
-  
+
   def pick_image
     pick_image_with_source(UIImagePickerControllerSourceTypePhotoLibrary)
   end
-  
+
   def take_image
     pick_image_with_source(UIImagePickerControllerSourceTypeCamera)
   end
-  
+
   def pick_image_with_source(source_type)
     # Create and show the image picker.
     imagePicker = UIImagePickerController.alloc.init
@@ -117,7 +117,7 @@ class ImageCompositionController < UIViewController
     imagePicker.allowsImageEditing = false
     presentModalViewController(imagePicker, animated:true)
   end
-  
+
   # UIImagePickerControllerDelegate methods
 
   def imagePickerControllerDidCancel(picker)
@@ -133,7 +133,7 @@ class ImageCompositionController < UIViewController
     end
     dismissModalViewControllerAnimated(true)
   end
-  
+
   def save_image
     image = view.image
 
@@ -157,9 +157,9 @@ class ImageCompositionController < UIViewController
 
     # Potential landscape rotation.
     CGContextSaveGState(c)
-     
+
     # Get the (possibly rotated) image.
-    trollface_image = troll_image_view.image 
+    trollface_image = troll_image_view.image
     if trollfaceRotation != 0
       trollface_image = troll_image_view.image.imageRotatedByRadians(trollfaceRotation)
     end
@@ -172,12 +172,12 @@ class ImageCompositionController < UIViewController
     # Draw the trollface image, correctly scaled.
     trollface_image.drawInRect(CGRectMake(troll_image_view.frame.origin.x, troll_image_view.frame.origin.y, trollface_image.size.width * trollfaceScaleX, trollface_image.size.height * trollfaceScaleY))
 
-    CGContextRestoreGState(c) 
+    CGContextRestoreGState(c)
 
     newImage = UIGraphicsGetImageFromCurrentImageContext()  # UIImage returned
 
     UIGraphicsEndImageContext()
-          
+
     # Save to camera roll.
     library = ALAssetsLibrary.alloc.init
     library.writeImageToSavedPhotosAlbum(newImage.CGImage, orientation:ALAssetOrientationUp, completionBlock: lambda do |assetURL, error|
@@ -188,6 +188,6 @@ class ImageCompositionController < UIViewController
         alert.addButtonWithTitle('OK')
         alert.show
       end
-    end)     
+    end)
   end
 end

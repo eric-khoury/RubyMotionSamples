@@ -18,7 +18,7 @@ class DetailController < UIViewController
     font = UIFont.fontWithName(@font_name, size:16)
     frame_size = sample_text.sizeWithFont(font, constrainedToSize:[self.view.bounds.size.width - 20, 1000], lineBreakMode:UILineBreakModeWordWrap)
     rect = [[10, 10], [frame_size.width, frame_size.height]]
-    
+
     @text_label.text = sample_text
     @text_label.frame = rect
     @text_label.font = font
@@ -33,9 +33,9 @@ class DetailController < UIViewController
   def sample_text
     <<EOS
     #{@font_name}
-    
-    RubyMotion offers developers the expressiveness of Ruby with no compromises. It's hard to imagine a more appealing way to build native iOS applications. 
-    
+
+    RubyMotion offers developers the expressiveness of Ruby with no compromises. It's hard to imagine a more appealing way to build native iOS applications.
+
     This is AWESOME! With just minimal iOS experience, I was able to get a working app up and running on my phone. Oh, the feeling of power!
 
     RubyMotion is a dream come true for Rubyists who want to create fast, native iOS apps!

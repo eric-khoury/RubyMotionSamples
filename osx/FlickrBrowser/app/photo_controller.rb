@@ -9,7 +9,7 @@ class PhotoController
     @browserView.dataSource = self
     @browserView.delegate = self
 
-    scrollView = NSScrollView.alloc.initWithFrame(window.contentView.bounds)   
+    scrollView = NSScrollView.alloc.initWithFrame(window.contentView.bounds)
     scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable
     scrollView.hasVerticalScroller = true
     scrollView.documentView = @browserView
@@ -52,7 +52,7 @@ class PhotoController
 
   def imageBrowser(browser, itemAtIndex:index)
     photo = @cache[index]
-    if photo.nil? 
+    if photo.nil?
       entry = @results[index]
       html = entry.content.HTMLString
       link = html.scan(/<a\s+href="([^"]+)" title/)[0][0]

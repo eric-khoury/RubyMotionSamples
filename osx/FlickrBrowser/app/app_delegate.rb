@@ -28,7 +28,7 @@ class AppDelegate
   SearchPhotoIdentifier = 'SearchPhotoIdentifier'
 
   def toolbarAllowedItemIdentifiers(toolbar)
-    [SearchPhotoIdentifier, NSToolbarFlexibleSpaceItemIdentifier, NSToolbarSpaceItemIdentifier, NSToolbarSeparatorItemIdentifier]  
+    [SearchPhotoIdentifier, NSToolbarFlexibleSpaceItemIdentifier, NSToolbarSpaceItemIdentifier, NSToolbarSeparatorItemIdentifier]
   end
 
   def toolbarDefaultItemIdentifiers(toolbar)

@@ -6,7 +6,7 @@ class CircleLayout < UICollectionViewLayout
     size = collectionView.frame.size
     @cell_count = collectionView.numberOfItemsInSection(0)
     @center = CGPoint.new(size.width / 2.0, size.height / 2.0)
-    @radius = [size.width, size.height].min / 2.5  
+    @radius = [size.width, size.height].min / 2.5
   end
 
   def collectionViewContentSize
@@ -18,7 +18,7 @@ class CircleLayout < UICollectionViewLayout
       obj.size = [ItemSize, ItemSize]
       obj.center = [@center.x + @radius * Math.cos(2 * path.item * Math::PI / @cell_count), @center.y + @radius * Math.sin(2 * path.item * Math::PI / @cell_count)]
     end
-  end  
+  end
 
   def layoutAttributesForElementsInRect(rect)
     (0...@cell_count).map { |i| layoutAttributesForItemAtIndexPath(NSIndexPath.indexPathForItem(i, inSection:0)) }

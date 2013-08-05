@@ -11,7 +11,7 @@ class CustomViewController2 < UIViewController
   def viewDidLoad
     puts "#{self.to_s}: CustomViewController2::viewDidLoad"
     self.title = "CustomVC2"
-    
+
     @idlabel = retrieve_subview_with_tag(self, TAG_IDLABEL)
     @idlabel.text = self.to_s
 

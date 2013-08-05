@@ -12,7 +12,7 @@ class ServiceWatcher
       name:IMPersonInfoChangedNotification,
       object:nil)
   end
-  
+
   def stopMonitoring
     IMService.notificationCenter.removeObserver(self)
   end
@@ -30,16 +30,16 @@ class ServiceWatcher
     end
   end
 
-  # Received from IMService's custom notification center. Posted when a different user (screenName) logs in, logs off, goes away, 
-  # and so on. This notification is for the IMService object.The user information dictionary will always contain an 
+  # Received from IMService's custom notification center. Posted when a different user (screenName) logs in, logs off, goes away,
+  # and so on. This notification is for the IMService object.The user information dictionary will always contain an
   # IMPersonScreenNameKey and an IMPersonStatusKey, and no others.
   def imPersonStatusChangedNotification(notification)
     forwardToObservers(notification)
   end
 
-  # Received from IMService's custom notification center. Posted when a screenName changes some aspect of their published information. 
-  # This notification is for the IMService object. The user information dictionary will always contain an IMPersonScreenNameKey and may 
-  # contain any of the following keys as described by "Dictionary Keys" in this document: <tt>IMPersonStatusMessageKey, IMPersonIdleSinceKey, 
+  # Received from IMService's custom notification center. Posted when a screenName changes some aspect of their published information.
+  # This notification is for the IMService object. The user information dictionary will always contain an IMPersonScreenNameKey and may
+  # contain any of the following keys as described by "Dictionary Keys" in this document: <tt>IMPersonStatusMessageKey, IMPersonIdleSinceKey,
   # IMPersonFirstNameKey, IMPersonLastNameKey, IMPersonEmailKey, IMPersonPictureDataKey, IMPersonAVBusyKey, IMPersonCapabilitiesKey</tt>.
   # If a particular attribute has been removed, the value for the relevant key will be NSNull.
   def imPersonInfoChangedNotification(notification)

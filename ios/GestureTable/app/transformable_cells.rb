@@ -19,13 +19,13 @@ class UnfoldingTableViewCell < TransformableTableViewCell
       transform = CATransform3DIdentity
       transform.m34 = -1 / 500.to_f
       contentView.layer.setSublayerTransform(transform)
-  
+
       textLabel.layer.anchorPoint = CGPointMake(0.5, 0.0)
       detailTextLabel.layer.anchorPoint = CGPointMake(0.5, 1.0)
-  
+
       textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight
       detailTextLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight
-  
+
       self.selectionStyle = UITableViewCellSelectionStyleNone
       self.tintColor = UIColor.whiteColor
     end
@@ -61,12 +61,12 @@ class PullDownTableViewCell < TransformableTableViewCell
       transform = CATransform3DIdentity
       transform.m34 = -1 / 500.to_f
       contentView.layer.setSublayerTransform(transform)
-  
+
       textLabel.layer.anchorPoint = CGPointMake(0.5, 1.0)
       textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight
-  
+
       self.selectionStyle = UITableViewCellSelectionStyleNone
-  
+
       @tintColor = UIColor.whiteColor
     end
     self

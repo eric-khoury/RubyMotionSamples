@@ -11,9 +11,9 @@ class HelloView < UIView
       text = @touches ? "Touched #{@touches} times!" : "Hello RubyMotion!"
     end
 
-    bgcolor.set 
+    bgcolor.set
     UIBezierPath.bezierPathWithRect(frame).fill
-  
+
     font = UIFont.systemFontOfSize(24)
     UIColor.whiteColor.set
     text.drawAtPoint(CGPoint.new(10, 20), withFont:font)
@@ -21,13 +21,13 @@ class HelloView < UIView
 
   def touchesMoved(touches, withEvent:event)
     @moved = true
-    setNeedsDisplay  
+    setNeedsDisplay
   end
 
   def touchesEnded(touches, withEvent:event)
     @moved = false
     @touches ||= 0
     @touches += 1
-    setNeedsDisplay  
+    setNeedsDisplay
   end
 end

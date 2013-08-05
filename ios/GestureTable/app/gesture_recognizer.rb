@@ -10,7 +10,7 @@ class GestureRecognizer
       @state = :none
       @tableViewDelegate = tableView.delegate
       tableView.delegate = self
-    
+
       @pinchRecognizer = UIPinchGestureRecognizer.alloc.initWithTarget(self, action: :"pinchGestureRecognizer:")
       @panRecognizer = UIPanGestureRecognizer.alloc.initWithTarget(self, action: :"panGestureRecognizer:")
       @longPressRecognizer = UILongPressGestureRecognizer.alloc.initWithTarget(self, action: :"longPressGestureRecognizer:")
@@ -51,7 +51,7 @@ class GestureRecognizer
       @tableView.deleteRowsAtIndexPaths([@addingIndexPath], withRowAnimation: UITableViewRowAnimationNone)
       @tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationNone)
       @delegate.gestureRecognizer(self, needsMoveRowAtIndexPath: @addingIndexPath, toIndexPath: indexPath)
-      @tableView.endUpdates 
+      @tableView.endUpdates
       @addingIndexPath = indexPath
     end
   end
@@ -316,7 +316,7 @@ class GestureRecognizer
     if scrollView.contentOffset.y < 0
       if @addingIndexPath.nil? && @state == :none && !scrollView.isDecelerating
         @state = :dragging
-        @addingIndexPath = 
+        @addingIndexPath =
           if @delegate.respond_to?(:"gestureRecognizer:willCreateCellAtIndexPath:")
             @delegate.gestureRecognizer(self, willCreateCellAtIndexPath: @addingIndexPath)
           else

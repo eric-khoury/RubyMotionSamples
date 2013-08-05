@@ -9,7 +9,7 @@ class LocationsStore
       # Fetch all locations from the model, sorting by the creation date.
       request = NSFetchRequest.alloc.init
       request.entity = NSEntityDescription.entityForName('Location', inManagedObjectContext:@context)
-      request.sortDescriptors = [NSSortDescriptor.alloc.initWithKey('creation_date', ascending:false)] 
+      request.sortDescriptors = [NSSortDescriptor.alloc.initWithKey('creation_date', ascending:false)]
 
       error_ptr = Pointer.new(:object)
       data = @context.executeFetchRequest(request, error:error_ptr)

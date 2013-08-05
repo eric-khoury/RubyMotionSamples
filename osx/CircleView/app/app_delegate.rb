@@ -18,34 +18,34 @@ class AppDelegate
     slider1 = NSSlider.alloc.initWithFrame(NSMakeRect(22, 79, 275, 21))
     slider1.action = :"takeRadiusFrom:"
     slider1.target = @circle_view
-    slider1.minValue = 1 
-    slider1.maxValue = 400 
-    slider1.intValue = 115 
+    slider1.minValue = 1
+    slider1.maxValue = 400
+    slider1.intValue = 115
     slider1.autoresizingMask = NSViewWidthSizable
     @mainWindow.contentView.addSubview(slider1)
 
     slider2 = NSSlider.alloc.initWithFrame(NSMakeRect(22, 51, 275, 21))
-    slider2.action = :"takeStartingAngleFrom:" 
-    slider2.target = @circle_view 
-    slider2.minValue = 0 
-    slider2.maxValue = 6.28 
-    slider2.floatValue = 1.6 
-    slider2.autoresizingMask = NSViewWidthSizable 
+    slider2.action = :"takeStartingAngleFrom:"
+    slider2.target = @circle_view
+    slider2.minValue = 0
+    slider2.maxValue = 6.28
+    slider2.floatValue = 1.6
+    slider2.autoresizingMask = NSViewWidthSizable
     @mainWindow.contentView.addSubview(slider2)
 
     color_well = NSColorWell.alloc.initWithFrame(NSMakeRect(328, 75, 53, 30))
-    color_well.color = NSColor.blackColor 
-    color_well.action = :"takeColorFrom:" 
-    color_well.target = @circle_view 
-    color_well.autoresizingMask = NSViewMinXMargin 
+    color_well.color = NSColor.blackColor
+    color_well.action = :"takeColorFrom:"
+    color_well.target = @circle_view
+    color_well.autoresizingMask = NSViewMinXMargin
     @mainWindow.contentView.addSubview(color_well)
 
     button = NSButton.alloc.initWithFrame(NSMakeRect(323, 43, 63, 28))
-    button.title = "Spin" 
-    button.action = "toggleAnimation:" 
-    button.target = @circle_view 
-    button.bezelStyle = NSRoundedBezelStyle 
-    button.autoresizingMask = NSViewMinXMargin 
+    button.title = "Spin"
+    button.action = "toggleAnimation:"
+    button.target = @circle_view
+    button.bezelStyle = NSRoundedBezelStyle
+    button.autoresizingMask = NSViewMinXMargin
     @mainWindow.contentView.addSubview(button)
 
     text = NSTextField.alloc.initWithFrame(NSMakeRect(24, 15, 358, 22))

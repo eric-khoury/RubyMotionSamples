@@ -1,6 +1,6 @@
 class FileSystemItem
   attr_reader :relativePath
-  
+
   def initWithPath(path, parent:obj)
     if init
       @relativePath = File.basename(path)
@@ -8,11 +8,11 @@ class FileSystemItem
     end
     self
   end
-  
+
   def self.rootItem
     @rootItem ||= self.alloc.initWithPath '/', parent:nil
   end
-  
+
   def children
     unless @children
       if File.directory?(fullPath) and File.readable?(fullPath)
@@ -27,15 +27,15 @@ class FileSystemItem
     end
     @children
   end
-  
+
   def fullPath
     @parent ? File.join(@parent.fullPath, @relativePath) : @relativePath
   end
-  
+
   def childAtIndex(n)
     children[n]
   end
-  
+
   def numberOfChildren
     children == -1 ? -1 : children.size
   end

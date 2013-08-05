@@ -26,13 +26,13 @@ class DotView < NSView
   def drawRect(rect)
     NSColor.whiteColor.set
     NSRectFill(bounds) # Equiv to NSBezierPath.bezierPathWithRect(bounds).fill
-  
+
     dotRect = NSMakeRect(0, 0, 0, 0)
     dotRect.origin.x = @center.x - @radius
     dotRect.origin.y = @center.y - @radius
     dotRect.size.width  = 2 * @radius
     dotRect.size.height = 2 * @radius
-    
+
     @color.set
     NSBezierPath.bezierPathWithOvalInRect(dotRect).fill
   end
@@ -51,7 +51,7 @@ class DotView < NSView
   # location in window coordinates; use convertPoint:fromView: (with "nil"
   # as the view argument) to convert this point to local view coordinates.
   #
-  # Note that once we get the new center, we call setNeedsDisplay:YES to 
+  # Note that once we get the new center, we call setNeedsDisplay:YES to
   # mark that the view needs to be redisplayed (which is done automatically
   # by the AppKit).
   def mouseUp(event)
@@ -61,7 +61,7 @@ class DotView < NSView
 
   # setRadius: is an action method which lets you change the radius of the dot.
   # We assume the sender is a control capable of returning a floating point
-  # number; so we ask for it's value, and mark the view as needing to be 
+  # number; so we ask for it's value, and mark the view as needing to be
   # redisplayed. A possible optimization is to check to see if the old and
   # new value is the same, and not do anything if so.
   def setRadius(sender)
@@ -71,8 +71,8 @@ class DotView < NSView
 
   # setColor: is an action method which lets you change the color of the dot.
   # We assume the sender is a control capable of returning a color (NSColorWell
-  # can do this). We get the value and mark the view as needing to be redisplayed. 
-  # A possible optimization is to check to see if the old and new value is the same, 
+  # can do this). We get the value and mark the view as needing to be redisplayed.
+  # A possible optimization is to check to see if the old and new value is the same,
   # and not do anything if so.
   def setColor(sender)
     @color = sender.color

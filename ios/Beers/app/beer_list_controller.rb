@@ -12,7 +12,7 @@ class BeerListController < UITableViewController
 
   def viewWillAppear(animated)
     navigationController.setNavigationBarHidden(true, animated:true)
-  end    
+  end
 
   def tableView(tableView, numberOfRowsInSection:section)
     Beer::All.size
